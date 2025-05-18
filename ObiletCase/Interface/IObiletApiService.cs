@@ -12,7 +12,7 @@ namespace ObiletCase.Interface
     public interface IObiletApiService
     {
         Task<SessionResponse> GetSession();
-        Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(DeviceSession deviceSession, string searchWord);
+        Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(DeviceSession deviceSession, string searchText = null);
         Task<ResponseModel<List<JourneyDataModel>>> GetJourneysAsync(DeviceSession deviceSession, JourneyDataModel journeyDataModel);
     }
 }

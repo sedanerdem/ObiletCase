@@ -1,86 +1,97 @@
 ﻿@{
-    ViewBag.Title = "Ana Sayfa";
+    ViewBag.Title = "Obilet - Otobüs Bileti";
     var locations = ViewData["Locations"] as List<ObiletCase.Models.Response.LocationDataModel>;
-    var journeys = ViewData["Journeys"] as List<ObiletCase.Models.Request.JourneyDataModel>;
 }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Bus Locations</title>
-    <style>
-        table {
-            width: 90%;
-            margin: 20px auto;
-            border-collapse: collapse;
-            font-family: sans-serif;
-        }
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Otobüs Bileti Ara</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="searchForm" method="post" action="@Url.Action("Journeys", "Home")">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="originId">Nereden</label>
+                                    <select class="form-control" id="originId" name="originId" required>
+                                        <option value="">Seçiniz</option>
+                                        @foreach (var location in locations)
+                                        {
+                                            <option value="@location.Id">@location.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="destinationId">Nereye</label>
+                                    <select class="form-control" id="destinationId" name="destinationId" required>
+                                        <option value="">Seçiniz</option>
+                                        @foreach (var location in locations)
+                                        {
+                                            <option value="@location.Id">@location.Name</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="swapLocations">
+                                        Değiştir
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
+                        <div class="form-group">
+                            <label for="departureDate">Tarih</label>
+                            <div class="input-group">
+                                <input type="date" class="form-control" id="departureDate" name="departureDate" required>
+                                <div class="input-group-btn mx-4">
+                                    <button type="button" class="btn btn-outline-secondary" id="today">Bugün</button>
+                                    <button type="button" class="btn btn-outline-secondary" id="tomorrow">Yarın</button>
+                                </div>
+                            </div>
+                        </div>
 
-        th {
-            background-color: #f2f2f2;
-        }
+                        <button type="submit" class="btn btn-primary btn-block mt-2">Bilet Ara</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        tr:hover {
-            background-color: #f9f9f9;
-        }
-    </style>
-</head>
-<body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        // Bugünün tarihini minimum tarih olarak ayarla ve varsayılan değer olarak ata
+        var today = new Date();
+        var todayStr = today.toISOString().split('T')[0];
+        $('#departureDate').attr('min', todayStr);
+        $('#departureDate').val(todayStr);
 
-    <h2 style="text-align: center;">Bus Location List</h2>
-    <table id="busTable">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Parent Id</th>
-                <th>City Name</th>
-                <th>Keywords</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in locations)
-            {
-                <tr>
-                    <td>
-                        @item.Id
-                    </td>
-                    <td>
-                        @item.ParentId
-                    </td>
-                    <td>
-                        @item.CityName
-                    </td>
-                    <td>
-                        @item.Keywords
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        // Bugün butonu tıklama
+        $('#today').click(function () {
+            $('#departureDate').val(todayStr);
+        });
 
-    <h2 style="text-align: center;">Journey List</h2>
-    <table id="journeyTable">
-        <thead>
-            <tr>
-                <th>Partner Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in journeys)
-            {
-                <tr>
-                    <td>
-                        @item.PartnerName
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</body>
-</html>
+        // Yarın butonu tıklama
+        $('#tomorrow').click(function () {
+            var tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            $('#departureDate').val(tomorrow.toISOString().split('T')[0]);
+        });
+
+        // Lokasyonları değiştir
+        $('#swapLocations').click(function () {
+            var origin = $('#originId').val();
+            var destination = $('#destinationId').val();
+            $('#originId').val(destination);
+            $('#destinationId').val(origin);
+        });
+    });
+</script>
