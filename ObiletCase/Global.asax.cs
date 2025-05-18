@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObiletCase.App_Start;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,7 @@ namespace ObiletCase
     {
         protected void Application_Start()
         {
+            SimpleInjectorConfig.Initialize();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
