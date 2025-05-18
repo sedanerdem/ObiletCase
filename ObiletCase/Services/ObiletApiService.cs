@@ -38,11 +38,11 @@ namespace ObiletCase.Services
             return await _callApiService.CallApi<SessionRequestModel, SessionResponse>("api/client/getsession", bodyObject);
         }
 
-        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(DeviceSession deviceSession, string searchWord)
+        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(DeviceSession deviceSession, string searchText = null)
         {
             var bodyObject = new RequestModel<string>
             {
-                Data = searchWord,
+                Data = searchText,
                 DeviceSession = deviceSession,
                 Date = DateTime.Now,
                 Language = "tr-TR"

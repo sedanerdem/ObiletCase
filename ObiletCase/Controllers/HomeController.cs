@@ -1,4 +1,5 @@
 ﻿using ObiletCase.Interface;
+using ObiletCase.Models;
 using ObiletCase.Models.Request;
 using ObiletCase.Services;
 using System;
@@ -20,16 +21,15 @@ namespace ObiletCase.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var sessionResponse = await _obiletApiService.GetSession();
-
-
+            SessionResponse sessionResponse = await _obiletApiService.GetSession();
+            
             if (sessionResponse?.Data == null)
             {
                 ViewBag.Error = "Session alınamadı!";
                 return View("Error");
             }
 
-            var busResponse = await _obiletApiService.GetBusLocationsAsync(sessionResponse.Data, "ankara");
+            var busResponse = await _obiletApiService.GetBusLocationsAsync(sessionResponse.Data);
             var journeyResponse = await _obiletApiService.GetJourneysAsync(sessionResponse.Data, new JourneyDataModel { OriginId = 349, DestinationId = 356, DepartureDate = DateTime.Now });
 
             ViewBag.SessionId = sessionResponse.Data.SessionId;
