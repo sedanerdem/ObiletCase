@@ -15,10 +15,33 @@ namespace ObiletCase.Models.Request
         public long DestinationId { get; set; }
 
         [JsonProperty("departure-date")]
-        public DateTime DepartureDate { get; set; }
+        public string DepartureDate { get; set; }
 
-        [JsonProperty("partner-name")]
-        public string PartnerName { get; set; }
+        public Journey Journey { get; set; }
 
     }
+
+    public class Journey
+    {
+        public string Origin { get; set; }
+        
+        public string Destination { get; set; }
+        
+        public DateTime Departure { get; set; }
+        
+        public DateTime Arrival { get; set; }
+        
+        public string Currency { get; set; }
+        
+        public string Duration { get; set; }
+        
+        [JsonProperty("internet-price")]
+        public double InternetPrice { get; set; }
+        
+        public string Description { get; set; }
+        
+        [JsonProperty("partner-name")]
+        public string PartnerName { get; set; }
+    }
+
 }

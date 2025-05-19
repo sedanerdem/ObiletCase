@@ -16,5 +16,18 @@
 input,
 select,
 textarea {
-    max-width: 222.66px;
+    max-width: 295.5px;
+}
+
+.journey-card {
+    border-left: 4px solid #0d6efd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+
+.price-tag {
+    background-color: #dc3545; /* kırmızı */
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
 }
