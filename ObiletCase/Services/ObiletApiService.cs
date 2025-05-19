@@ -5,20 +5,34 @@ using ObiletCase.Models.Request;
 using ObiletCase.Models.Response;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ObiletCase.Services
 {
     public class ObiletApiService : IObiletApiService
     {
+        #region Private Variables
+
         private readonly ICallApiService _callApiService;
         private readonly ICacheService _cacheService;
+        private readonly SessionResponse _session;
+
+        #endregion Private Variables
+
+        #region Constructor
 
         public ObiletApiService(ICallApiService callApiService, ICacheService cacheService)
         {
             _callApiService = callApiService;
             _cacheService = cacheService;
+            _session = GetSessionWithCacheAsync().Result;
         }
+
+        #endregion Constructor
+
+        #region Public Methods
+
         public async Task<SessionResponse> GetSession()
         {
             var bodyObject = new SessionRequestModel
@@ -31,11 +45,11 @@ namespace ObiletCase.Services
                 },
                 Browser = new Browser
                 {
-                    Name =  ConnectionValues.BROWSER_NAME,
+                    Name = ConnectionValues.BROWSER_NAME,
                     Version = ConnectionValues.BROWSER_VERSION
                 }
             };
-            
+
             return await _callApiService.CallApi<SessionRequestModel, SessionResponse>(UrlPaths.GET_SESSION, bodyObject);
         }
 
@@ -47,21 +61,25 @@ namespace ObiletCase.Services
             }
 
             var session = await GetSession();
-            
+
             if (session.Status == Status.SUCCESS)
             {
                 await _cacheService.SetAsync(RedisKeys.SESSION, session, TimeSpan.FromHours(1));
+            }
+            else
+            {
+                throw new Exception(session.Message);
             }
 
             return session;
         }
 
-        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(DeviceSession deviceSession, string searchText = null)
+        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(string searchText = null)
         {
             var bodyObject = new RequestModel<string>
             {
                 Data = searchText,
-                DeviceSession = deviceSession,
+                DeviceSession = _session.Data,
                 Date = DateTime.Now,
                 Language = Languages.TR
             };
@@ -70,21 +88,14 @@ namespace ObiletCase.Services
         }
 
 
-        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsCacheAsync()
+        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsCacheAsync(string searchText = null)
         {
             if (await _cacheService.ExistsAsync(RedisKeys.BUS_LOCATIONS))
             {
                 return await _cacheService.GetAsync<ResponseModel<List<LocationDataModel>>>(RedisKeys.BUS_LOCATIONS);
             }
-           
-            var session = await GetSessionWithCacheAsync();
-            
-            if(session == null || session.Data == null)
-            {
-                return new ResponseModel<List<LocationDataModel>>(); //error handling ekle.
-            }
 
-            var busLocations = await GetBusLocationsAsync(session.Data);
+            var busLocations = await GetBusLocationsAsync(searchText);
             if (busLocations.Status == Status.SUCCESS)
             {
                 await _cacheService.SetAsync(RedisKeys.BUS_LOCATIONS, busLocations, TimeSpan.FromHours(1));
@@ -94,17 +105,34 @@ namespace ObiletCase.Services
         }
 
 
-        public async Task<ResponseModel<List<JourneyDataModel>>> GetJourneysAsync(DeviceSession deviceSession, JourneyDataModel journeyDataModel)
+        public async Task<ResponseModel<List<JourneyDataModel>>> GetJourneysAsync(JourneyDataModel journeyDataModel)
         {
             var bodyObject = new RequestModel<JourneyDataModel>
             {
                 Data = journeyDataModel,
-                DeviceSession = deviceSession,
+                DeviceSession = _session.Data,
                 Date = DateTime.Now,
                 Language = Languages.TR
             };
 
-            return await _callApiService.CallApi<RequestModel<JourneyDataModel>, ResponseModel<List<JourneyDataModel>>>(UrlPaths.GET_BUS_JOURNEYS, bodyObject);
+            var response = await _callApiService.CallApi<RequestModel<JourneyDataModel>, ResponseModel<List<JourneyDataModel>>>(UrlPaths.GET_BUS_JOURNEYS, bodyObject);
+
+            if (response.Status != Status.SUCCESS)
+            {
+                throw new Exception(response.UserMessage);
+            }
+
+            return response;
         }
+
+        public async Task<string> GetJourneyNameById(long id)
+        {
+            ResponseModel<List<LocationDataModel>> busLocationResponse = await GetBusLocationsCacheAsync();
+            return busLocationResponse.Data.FirstOrDefault(x => x.Id == id).Name;
+        }
+
+        #endregion Public Methods
+
+
     }
 }

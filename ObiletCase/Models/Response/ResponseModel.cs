@@ -10,7 +10,8 @@ namespace ObiletCase.Models
     {
         public string Status { get; set; }
         public T Data { get; set; }
+
+        [JsonProperty("user-message")]
+        public string UserMessage {  get; set; }    
     }
-
-
 }

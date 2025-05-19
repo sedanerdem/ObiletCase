@@ -1,7 +1,5 @@
 ﻿using ObiletCase.App_Start;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using ObiletCase.Middleware;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -16,6 +14,7 @@ namespace ObiletCase
             SimpleInjectorConfig.Initialize();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            GlobalFilters.Filters.Add(new ExceptionHandler());
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }

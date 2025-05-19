@@ -182,6 +182,7 @@
     <Compile Include="Interface\ICacheService.cs" />
     <Compile Include="Interface\ICallApiService.cs" />
     <Compile Include="Interface\IObiletApiService.cs" />
+    <Compile Include="Middleware\ExceptionHandler.cs" />
     <Compile Include="Models\DeviceSession.cs" />
     <Compile Include="Models\JourneyDataModel.cs" />
     <Compile Include="Models\Request\RequestModel.cs" />
