@@ -1,0 +1,93 @@
+﻿/* Sayfanın yüksekliği ve zemin rengi */
+html, body {
+	height: 100%;
+	background-color: #ffffff;
+}
+
+/* Ortalamayı sağlayan konteyner */
+.center-container {
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Kart tasarımı */
+.search-card {
+	width: 100%;
+	max-width: 700px;
+	border: none;
+	border-radius: 1rem;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Yer değiştir (swap) butonu */
+.btn-swap {
+	height: 42px;
+	width: 42px;
+	padding: 0;
+	font-size: 18px;
+	line-height: 1;
+}
+
+.ticket-search-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: #ffffff;
+	padding: 20px;
+}
+
+.ticket-card {
+	background-color: #fdfdfd;
+	border-radius: 8px;
+	padding: 24px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+	width: 100%;
+	max-width: 400px;
+}
+
+.ticket-label {
+	font-weight: 600;
+	color: #3f51b5;
+	font-size: 0.95rem;
+	margin-bottom: 6px;
+	display: block;
+}
+
+.ticket-input-group {
+	display: flex;
+	align-items: center;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	padding: 6px 10px;
+	position: relative;
+}
+
+	.ticket-input-group i {
+		color: #6c757d;
+		margin-right: 8px;
+		font-size: 1rem;
+	}
+
+.ticket-select,
+.ticket-date {
+	border: none;
+	flex: 1;
+	background-color: transparent;
+	outline: none;
+	font-size: 0.95rem;
+}
+
+.swap-btn {
+	border: none;
+	background: transparent;
+	color: #6c757d;
+	font-size: 1rem;
+	margin-left: auto;
+	cursor: pointer;
+}
+
+

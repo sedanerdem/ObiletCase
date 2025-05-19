@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using ObiletCase.Constants;
 using ObiletCase.Interface;
 using ObiletCase.Models;
 using ObiletCase.Models.Response;
@@ -19,8 +20,8 @@ namespace ObiletCase.Services
 
         public CallApiService()
         {
-            _url = "https://v2-api.obilet.com/";
-            _token = "JEcYcEMyantZV095WVc3G2JtVjNZbWx1";
+            _url = ConnectionValues.URL;
+            _token = ConnectionValues.TOKEN;
         }
 
         public async Task<TResponse> CallApi<T, TResponse>(string path, T body)

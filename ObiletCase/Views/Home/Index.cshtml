@@ -1,97 +1,133 @@
 ﻿@{
     ViewBag.Title = "Obilet - Otobüs Bileti";
-    var locations = ViewData["Locations"] as List<ObiletCase.Models.Response.LocationDataModel>;
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Otobüs Bileti Ara</h3>
-                </div>
-                <div class="panel-body">
-                    <form id="searchForm" method="post" action="@Url.Action("Journeys", "Home")">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="originId">Nereden</label>
-                                    <select class="form-control" id="originId" name="originId" required>
-                                        <option value="">Seçiniz</option>
-                                        @foreach (var location in locations)
-                                        {
-                                            <option value="@location.Id">@location.Name</option>
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="destinationId">Nereye</label>
-                                    <select class="form-control" id="destinationId" name="destinationId" required>
-                                        <option value="">Seçiniz</option>
-                                        @foreach (var location in locations)
-                                        {
-                                            <option value="@location.Id">@location.Name</option>
-                                        }
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="swapLocations">
-                                        Değiştir
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+<div class="ticket-search-container">
+    <form method="post" action="@Url.Action("Journeys", "Home")">
+        <div class="ticket-card">
+            <label class="ticket-label">Nereden</label>
+            <div class="ticket-input-group">
+                <i class="fas fa-map-marker-alt"></i>
+                <select id="originId" name="originId" class="form-control location-select" required></select>
+                <button type="button" class="swap-btn" id="swapLocations" title="Yerleri Değiştir">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+            </div>
 
-                        <div class="form-group">
-                            <label for="departureDate">Tarih</label>
-                            <div class="input-group">
-                                <input type="date" class="form-control" id="departureDate" name="departureDate" required>
-                                <div class="input-group-btn mx-4">
-                                    <button type="button" class="btn btn-outline-secondary" id="today">Bugün</button>
-                                    <button type="button" class="btn btn-outline-secondary" id="tomorrow">Yarın</button>
-                                </div>
-                            </div>
-                        </div>
+            <label class="ticket-label mt-3">Nereye</label>
+            <div class="ticket-input-group">
+                <i class="fas fa-map-marker-alt"></i>
+                <select id="destinationId" name="destinationId" class="form-control location-select" required></select>
+            </div>
 
-                        <button type="submit" class="btn btn-primary btn-block mt-2">Bilet Ara</button>
-                    </form>
+            <label class="ticket-label mt-3">Tarih</label>
+            <div class="ticket-input-group">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="date" class="form-control ticket-date" name="departureDate" id="departureDate" required />
+                <div class="ms-auto">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" id="today">Bugün</button>
+                    <button type="button" class="btn btn-dark btn-sm me-2 active" id="tomorrow">Yarın</button>
                 </div>
             </div>
+
+            <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Bileti Bul</button>
         </div>
-    </div>
+    </form>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous"></script>
 <script>
+    // Sayfa yüklendiğinde departureDate'e bugünün tarihi gelsin
+    window.addEventListener("DOMContentLoaded", () => {
+        const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+        document.getElementById("departureDate").value = tomorrow;
+    });
+
+    // Butonlara tıklayınca hem tarih değişsin hem buton stilleri güncellensin
+    document.getElementById("today").addEventListener("click", function () {
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById("departureDate").value = today;
+
+        // Stil güncelle
+        this.classList.add("btn-dark", "active");
+        this.classList.remove("btn-outline-secondary");
+
+        const tomorrowBtn = document.getElementById("tomorrow");
+        tomorrowBtn.classList.remove("btn-dark", "active");
+        tomorrowBtn.classList.add("btn-outline-secondary");
+    });
+
+    document.getElementById("tomorrow").addEventListener("click", function () {
+        const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+        document.getElementById("departureDate").value = tomorrow;
+
+        // Stil güncelle
+        this.classList.add("btn-dark", "active");
+        this.classList.remove("btn-outline-secondary");
+
+        const todayBtn = document.getElementById("today");
+        todayBtn.classList.remove("btn-dark", "active");
+        todayBtn.classList.add("btn-outline-secondary");
+    });
+
+    document.getElementById("swapLocations").addEventListener("click", function () {
+        const origin = $('#originId');
+        const destination = $('#destinationId');
+
+        const fromVal = origin.val();
+        const fromText = origin.find("option:selected").text();
+
+        const toVal = destination.val();
+        const toText = destination.find("option:selected").text();
+
+        // Eğer diğer select içinde bu değer yoksa, manuel ekle
+        if (destination.find(`option[value='${fromVal}']`).length === 0) {
+            destination.append(new Option(fromText, fromVal, false, false));
+        }
+        if (origin.find(`option[value='${toVal}']`).length === 0) {
+            origin.append(new Option(toText, toVal, false, false));
+        }
+
+        // Swap işlemi
+        origin.val(toVal).trigger('change');
+        destination.val(fromVal).trigger('change');
+    });
+
+
     $(document).ready(function () {
-        // Bugünün tarihini minimum tarih olarak ayarla ve varsayılan değer olarak ata
-        var today = new Date();
-        var todayStr = today.toISOString().split('T')[0];
-        $('#departureDate').attr('min', todayStr);
-        $('#departureDate').val(todayStr);
+        // Sayfa açıldığında default tüm listeyi çek
+        $.ajax({
+            url: '/Home/GetLocations',
+            type: 'GET',
+            data: { term: '' }, // boş term ile default liste çek
+            success: function (initialData) {
 
-        // Bugün butonu tıklama
-        $('#today').click(function () {
-            $('#departureDate').val(todayStr);
-        });
-
-        // Yarın butonu tıklama
-        $('#tomorrow').click(function () {
-            var tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            $('#departureDate').val(tomorrow.toISOString().split('T')[0]);
-        });
-
-        // Lokasyonları değiştir
-        $('#swapLocations').click(function () {
-            var origin = $('#originId').val();
-            var destination = $('#destinationId').val();
-            $('#originId').val(destination);
-            $('#destinationId').val(origin);
+                // Select2'yi başlat
+                $('.location-select').select2({
+                    placeholder: "Şehir ara...",
+                    data: initialData,
+                    ajax: {
+                        url: '/Home/GetLocations',
+                        dataType: 'json',
+                        delay: 300,
+                        data: function (params) {
+                            return {
+                                term: params.term || ''
+                            };
+                        },
+                        processResults: function (data) {
+                            return {
+                                results: data
+                            };
+                        },
+                        cache: true
+                    }
+                });
+            },
+            error: function () {
+                console.error("Lokasyonlar yüklenemedi.");
+            }
         });
     });
+
 </script>
+
