@@ -14,5 +14,10 @@ namespace ObiletCase.Constants
         /// Session Redis Key
         /// </summary>
         public const string SESSION = "session";
+
+        /// <summary>
+        /// Bus Locations Redis Key
+        /// </summary>
+        public const string BUS_LOCATIONS = "busLocations";
     }
 }

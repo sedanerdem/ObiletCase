@@ -2,12 +2,9 @@
 using ObiletCase.Models;
 using ObiletCase.Models.Request;
 using ObiletCase.Models.Response;
-using ObiletCase.Services;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace ObiletCase.Controllers
@@ -42,8 +39,15 @@ namespace ObiletCase.Controllers
         public async Task<ActionResult> Journeys(JourneyDataModel journeyDataModel)
         {
             SessionResponse sessionResponse = await _obiletApiService.GetSessionWithCacheAsync();
+            ResponseModel<List<LocationDataModel>> busLocationResponse = await _obiletApiService.GetBusLocationsCacheAsync();
+
+            var destinationName = busLocationResponse.Data.FirstOrDefault(x => x.Id == journeyDataModel.DestinationId).Name;
+            var originName = busLocationResponse.Data.FirstOrDefault(x => x.Id == journeyDataModel.OriginId).Name;
+
             ResponseModel<List<JourneyDataModel>> journeyResponse = await _obiletApiService.GetJourneysAsync(sessionResponse.Data, journeyDataModel);
             ViewData["Journeys"] = journeyResponse.Data;
+            ViewData["OriginName"] = originName;
+            ViewData["DestinationName"] = destinationName;
             return View();
         }
 

@@ -69,6 +69,31 @@ namespace ObiletCase.Services
             return await _callApiService.CallApi<RequestModel<string>, ResponseModel<List<LocationDataModel>>>(UrlPaths.GET_BUS_LOCATIONS, bodyObject);
         }
 
+
+        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsCacheAsync()
+        {
+            if (await _cacheService.ExistsAsync(RedisKeys.BUS_LOCATIONS))
+            {
+                return await _cacheService.GetAsync<ResponseModel<List<LocationDataModel>>>(RedisKeys.BUS_LOCATIONS);
+            }
+           
+            var session = await GetSessionWithCacheAsync();
+            
+            if(session == null || session.Data == null)
+            {
+                return new ResponseModel<List<LocationDataModel>>(); //error handling ekle.
+            }
+
+            var busLocations = await GetBusLocationsAsync(session.Data);
+            if (busLocations.Status == Status.SUCCESS)
+            {
+                await _cacheService.SetAsync(RedisKeys.BUS_LOCATIONS, busLocations, TimeSpan.FromHours(1));
+            }
+
+            return busLocations;
+        }
+
+
         public async Task<ResponseModel<List<JourneyDataModel>>> GetJourneysAsync(DeviceSession deviceSession, JourneyDataModel journeyDataModel)
         {
             var bodyObject = new RequestModel<JourneyDataModel>
