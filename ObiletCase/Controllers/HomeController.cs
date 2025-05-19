@@ -27,7 +27,8 @@ namespace ObiletCase.Controllers
         [HttpGet]
         public async Task<JsonResult> GetLocations(string term)
         {
-            ResponseModel<List<LocationDataModel>> busResponse = await _obiletApiService.GetBusLocationsAsync(term);
+            ResponseModel<List<LocationDataModel>> busResponse = await _obiletApiService.GetBusLocationsCacheAsync(term);
+
             var result = busResponse.Data
                 .Select(l => new { id = l.Id, text = l.Name })
                 .ToList();

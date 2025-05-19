@@ -16,17 +16,19 @@ namespace ObiletCase.Services
 
         private readonly ICallApiService _callApiService;
         private readonly ICacheService _cacheService;
+        private readonly ILogService _log;
         private readonly SessionResponse _session;
-
+        
         #endregion Private Variables
 
         #region Constructor
 
-        public ObiletApiService(ICallApiService callApiService, ICacheService cacheService)
+        public ObiletApiService(ICallApiService callApiService, ICacheService cacheService, ILogService log)
         {
+            _log = log;
             _callApiService = callApiService;
             _cacheService = cacheService;
-            _session = GetSessionWithCacheAsync().Result;
+            _session = GetSessionWithCacheAsync().Result;            
         }
 
         #endregion Constructor
@@ -57,6 +59,7 @@ namespace ObiletCase.Services
         {
             if (await _cacheService.ExistsAsync(RedisKeys.SESSION))
             {
+                _log.Info("Session verileri cacheden getirildi - GetSessionWithCacheAsync");
                 return await _cacheService.GetAsync<SessionResponse>(RedisKeys.SESSION);
             }
 
@@ -65,9 +68,11 @@ namespace ObiletCase.Services
             if (session.Status == Status.SUCCESS)
             {
                 await _cacheService.SetAsync(RedisKeys.SESSION, session, TimeSpan.FromHours(1));
+                _log.Info("Session verileri cachelendi - GetSessionWithCacheAsync");
             }
             else
             {
+                _log.Error(new Exception(session.Message), "GetSessionWithCacheAsync");
                 throw new Exception(session.Message);
             }
 
@@ -92,6 +97,7 @@ namespace ObiletCase.Services
         {
             if (await _cacheService.ExistsAsync(RedisKeys.BUS_LOCATIONS))
             {
+                _log.Info("Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync");
                 return await _cacheService.GetAsync<ResponseModel<List<LocationDataModel>>>(RedisKeys.BUS_LOCATIONS);
             }
 
@@ -99,6 +105,7 @@ namespace ObiletCase.Services
             if (busLocations.Status == Status.SUCCESS)
             {
                 await _cacheService.SetAsync(RedisKeys.BUS_LOCATIONS, busLocations, TimeSpan.FromHours(1));
+                _log.Info("- Lokasyon verileri cachelendi - GetBusLocationsCacheAsync");
             }
 
             return busLocations;
@@ -119,15 +126,18 @@ namespace ObiletCase.Services
 
             if (response.Status != Status.SUCCESS)
             {
+                _log.Error(new Exception(response.UserMessage), " - GetJourneysAsync");
                 throw new Exception(response.UserMessage);
             }
 
+            _log.Info("Seyahat verileri çekildi - GetJourneysAsync");
             return response;
         }
 
         public async Task<string> GetJourneyNameById(long id)
         {
             ResponseModel<List<LocationDataModel>> busLocationResponse = await GetBusLocationsCacheAsync();
+            _log.Info(" - GetJourneyNameById");
             return busLocationResponse.Data.FirstOrDefault(x => x.Id == id).Name;
         }
 
