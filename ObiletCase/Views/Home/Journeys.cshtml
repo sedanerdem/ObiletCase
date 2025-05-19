@@ -1,29 +1,46 @@
 ﻿@{
-    ViewBag.Title = "Journeys";
+    ViewBag.Title = "Seferler";
     var journeys = ViewData["Journeys"] as List<ObiletCase.Models.Request.JourneyDataModel>;
     var journey = journeys.FirstOrDefault();
+    var originName = ViewData["OriginName"] as string;
+    var destinationName = ViewData["DestinationName"] as string;
 }
 
 <div class="container mt-4">
-    <div class="bg-primary text-white p-3 rounded-top d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">@journey.Journey.Origin - @journey.Journey.Destination</h5>
-        <small>@journey.Journey.Departure.ToString("dd MMMM dddd", new System.Globalization.CultureInfo("tr-TR"))</small>
+    @*<a href="/" class="back-button">
+        <i class="fas fa-arrow-left"></i>
+        Yeni Arama Yap
+    </a>*@
+    <div class="journey-header d-flex justify-content-between align-items-center">
+        <div class="text-start">
+            <a href="/" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Geri
+            </a>
+        </div>
+        <div>
+            <h4 class="mb-1">@originName - @destinationName</h4>
+            <small>@journey.Journey.Departure.ToString("dd MMMM dddd", new System.Globalization.CultureInfo("tr-TR"))</small>
+        </div>
+        <div class="text-end">
+            <small>@journeys.Count Sefer Bulundu</small>
+        </div>
     </div>
 
-    @foreach (var item in journeys)
+    @foreach (var item in journeys.OrderBy(x=>x.DepartureDate))
     {
-        <div class="card journey-card mb-3">
-            <div class="card-body d-flex justify-content-between align-items-center">
+        <div class="journey-card">
+            <div class="journey-info d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="text-muted small fw-bold">KALKIŞ → VARIŞ</div>
-                    <div class="fw-bold fs-5">
+                    <div class="journey-time">
                         @item.Journey.Departure.ToString("HH:mm") → @item.Journey.Arrival.ToString("HH:mm")
                     </div>
-                    <div class="small text-secondary">
-                        @item.Journey.Departure - @item.Journey.Arrival
+                    <div class="journey-details">
+                        <span class="journey-partner">@item.Journey.PartnerName</span>
+                        <span class="ms-2">@item.Journey.Origin - @item.Journey.Destination</span>
                     </div>
                 </div>
-                <div class="price-tag text-white fw-bold">
+                <div class="price-tag">
                     @item.Journey.InternetPrice.ToString("N2") TL
                 </div>
             </div>
