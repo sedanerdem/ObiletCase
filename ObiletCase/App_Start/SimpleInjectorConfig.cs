@@ -16,6 +16,7 @@ namespace ObiletCase.App_Start
             container.Register<ICallApiService, CallApiService>(Lifestyle.Singleton);
             container.Register<IObiletApiService, ObiletApiService>(Lifestyle.Singleton);
             container.Register<ICacheService, RedisCacheService>(Lifestyle.Singleton);
+            container.Register<ILogService, LogService>(Lifestyle.Singleton);
             container.RegisterMvcControllers(System.Reflection.Assembly.GetExecutingAssembly());
             container.Verify();
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));

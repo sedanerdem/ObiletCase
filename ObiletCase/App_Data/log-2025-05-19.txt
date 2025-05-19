@@ -1,0 +1,9 @@
+2025-05-19 22:05:29.1611 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-19 22:05:31.8578 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-19 22:05:36.0506 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-19 22:05:37.7959 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-19 22:05:37.7959 [INFO]  - GetJourneyNameById 
+2025-05-19 22:05:37.7959 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-19 22:05:37.7959 [INFO]  - GetJourneyNameById 
+2025-05-19 22:05:38.2194 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-19 22:05:40.0739 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 

@@ -13,8 +13,9 @@ namespace ObiletCase.Interface
     {
         Task<SessionResponse> GetSession();
         Task<SessionResponse> GetSessionWithCacheAsync();
-        Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(DeviceSession deviceSession, string searchText = null);
-        Task<ResponseModel<List<JourneyDataModel>>> GetJourneysAsync(DeviceSession deviceSession, JourneyDataModel journeyDataModel);
-        Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsCacheAsync();
+        Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsAsync(string searchText = null);
+        Task<ResponseModel<List<JourneyDataModel>>> GetJourneysAsync(JourneyDataModel journeyDataModel);
+        Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsCacheAsync(string searchText = null);
+        Task<string> GetJourneyNameById(long id);
     }
 }

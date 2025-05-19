@@ -1,7 +1,9 @@
-﻿using ObiletCase.Interface;
+﻿using ObiletCase.Constants;
+using ObiletCase.Interface;
 using ObiletCase.Models;
 using ObiletCase.Models.Request;
 using ObiletCase.Models.Response;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,8 +27,7 @@ namespace ObiletCase.Controllers
         [HttpGet]
         public async Task<JsonResult> GetLocations(string term)
         {
-            SessionResponse sessionResponse = await _obiletApiService.GetSessionWithCacheAsync();
-            ResponseModel<List<LocationDataModel>> busResponse = await _obiletApiService.GetBusLocationsAsync(sessionResponse.Data, term);
+            ResponseModel<List<LocationDataModel>> busResponse = await _obiletApiService.GetBusLocationsCacheAsync(term);
 
             var result = busResponse.Data
                 .Select(l => new { id = l.Id, text = l.Name })
@@ -38,16 +39,19 @@ namespace ObiletCase.Controllers
         [HttpPost]
         public async Task<ActionResult> Journeys(JourneyDataModel journeyDataModel)
         {
-            SessionResponse sessionResponse = await _obiletApiService.GetSessionWithCacheAsync();
-            ResponseModel<List<LocationDataModel>> busLocationResponse = await _obiletApiService.GetBusLocationsCacheAsync();
+            var destinationName = await _obiletApiService.GetJourneyNameById(journeyDataModel.DestinationId);
+            var originName = await _obiletApiService.GetJourneyNameById(journeyDataModel.OriginId);
 
-            var destinationName = busLocationResponse.Data.FirstOrDefault(x => x.Id == journeyDataModel.DestinationId).Name;
-            var originName = busLocationResponse.Data.FirstOrDefault(x => x.Id == journeyDataModel.OriginId).Name;
+            ResponseModel<List<JourneyDataModel>> journeyResponse = await _obiletApiService.GetJourneysAsync(journeyDataModel);
 
-            ResponseModel<List<JourneyDataModel>> journeyResponse = await _obiletApiService.GetJourneysAsync(sessionResponse.Data, journeyDataModel);
             ViewData["Journeys"] = journeyResponse.Data;
             ViewData["OriginName"] = originName;
             ViewData["DestinationName"] = destinationName;
+            return View();
+        }
+
+        public ActionResult Error()
+        {
             return View();
         }
 

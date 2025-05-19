@@ -18,7 +18,6 @@ namespace ObiletCase.Models.Request
         public string DepartureDate { get; set; }
 
         public Journey Journey { get; set; }
-
     }
 
     public class Journey
