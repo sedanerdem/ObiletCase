@@ -7,12 +7,13 @@
 </div>
 
 <div class="ticket-search-container">
-    <form method="post" action="@Url.Action("Journeys", "Home")">
+    <form method="post" action="@Url.Action("Index", "Journey")">
         <div class="ticket-card">
             <label class="ticket-label">Nereden</label>
             <div class="ticket-input-group">
                 <i class="fas fa-map-marker-alt"></i>
                 <select id="originId" name="originId" class="form-control location-select" required></select>
+                <input type="hidden" name="originName" id="originName" />
                 <button type="button" class="swap-btn" id="swapLocations" title="Yerleri Değiştir">
                     <i class="fas fa-exchange-alt"></i>
                 </button>
@@ -22,6 +23,7 @@
             <div class="ticket-input-group">
                 <i class="fas fa-map-marker-alt"></i>
                 <select id="destinationId" name="destinationId" class="form-control location-select" required></select>
+                <input type="hidden" name="destinationName" id="destinationName" />
             </div>
 
             <label class="ticket-label mt-3">Tarih</label>
@@ -34,18 +36,117 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Bileti Bul</button>
+            <button id="searchButton" type="submit" class="btn btn-primary btn-block mt-4 w-100">Bileti Bul</button>
         </div>
     </form>
 </div>
 
 <script>
 
+    //LocalStorage - Arama Verilerinin Yüklenmesi
+    function loadLastSearch() {
+        const lastSearch = JSON.parse(localStorage.getItem('lastSearch') || '{}');
+
+        if (lastSearch.originId && lastSearch.originText) {
+            const originId = $('#originId');
+            if (originId.find("option[value='" + lastSearch.originId + "']").length == 0) {
+                const newOption = new Option(lastSearch.originText, lastSearch.originId, true, true);
+                originId.append(newOption).trigger('change');
+            } else {
+                originId.val(lastSearch.originId).trigger('change');
+            }
+        }
+
+        if (lastSearch.destinationId && lastSearch.destinationText) {
+            const destinationId = $('#destinationId');
+            if (destinationId.find("option[value='" + lastSearch.destinationId + "']").length == 0) {
+                const newOption = new Option(lastSearch.destinationText, lastSearch.destinationId, true, true);
+                destinationId.append(newOption).trigger('change');
+            } else {
+                destinationId.val(lastSearch.destinationId).trigger('change');
+            }
+        }
+
+        if (lastSearch.departureDate) {
+            $('#departureDate').val(lastSearch.departureDate);
+        }
+    }
+
+    //LocalStorage - Arama Verilerinin Kaydedilmes
+    function saveLastSearch() {
+        const searchData = {
+            originId: $('#originId').val(),
+            originText: $('#originId option:selected').text(),
+            destinationId: $('#destinationId').val(),
+            destinationText: $('#destinationId option:selected').text(),
+            departureDate: $('#departureDate').val()
+        };
+
+        localStorage.setItem('lastSearch', JSON.stringify(searchData));
+    }
+
+
     window.addEventListener("DOMContentLoaded", () => {
         const today = new Date().toISOString().split('T')[0];
         const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
         document.getElementById("departureDate").min = today;
         document.getElementById("departureDate").value = tomorrow;
+
+        $('#originId').on('change', function () {
+            const selectedData = $(this).select2('data')[0];
+            if (selectedData) {
+                $('#originName').val(selectedData.text);
+            }
+        });
+
+        $('#destinationId').on('change', function () {
+            const selectedData = $(this).select2('data')[0];
+            if (selectedData) {
+                $('#destinationName').val(selectedData.text);
+            }
+        });
+
+        // Sayfa açıldığında default tüm listeyi çek
+        $.ajax({
+            url: '/Home/GetLocations',
+            type: 'GET',
+            data: { term: '' }, // boş term ile default liste çek
+            success: function (initialData) {
+                $('#originName').val(initialData[0].text);
+                $('#destinationName').val(initialData[0].text);
+                // Select2'yi başlat
+                $('.location-select').select2({
+                    placeholder: "Şehir ara...",
+                    data: initialData,
+                    ajax: {
+                        url: '/Home/GetLocations',
+                        dataType: 'json',
+                        delay: 300,
+                        data: function (params) {
+                            return {
+                                term: params.term || ''
+                            };
+                        },
+                        processResults: function (data) {
+                            return {
+                                results: data
+                            };
+                        },
+                        cache: true
+                    }
+                });
+
+                loadLastSearch();
+            },
+            error: function () {
+                console.error("Lokasyonlar yüklenemedi.");
+            }
+        });
+    });
+
+
+    document.getElementById("searchButton").addEventListener("click", function () {
+        saveLastSearch();
     });
 
 
@@ -97,43 +198,6 @@
         // Swap işlemi
         origin.val(toVal).trigger('change');
         destination.val(fromVal).trigger('change');
-    });
-
-
-    $(document).ready(function () {
-        // Sayfa açıldığında default tüm listeyi çek
-        $.ajax({
-            url: '/Home/GetLocations',
-            type: 'GET',
-            data: { term: '' }, // boş term ile default liste çek
-            success: function (initialData) {
-
-                // Select2'yi başlat
-                $('.location-select').select2({
-                    placeholder: "Şehir ara...",
-                    data: initialData,
-                    ajax: {
-                        url: '/Home/GetLocations',
-                        dataType: 'json',
-                        delay: 300,
-                        data: function (params) {
-                            return {
-                                term: params.term || ''
-                            };
-                        },
-                        processResults: function (data) {
-                            return {
-                                results: data
-                            };
-                        },
-                        cache: true
-                    }
-                });
-            },
-            error: function () {
-                console.error("Lokasyonlar yüklenemedi.");
-            }
-        });
     });
 
 </script>

@@ -1,0 +1,185 @@
+2025-05-20 21:29:32.2399 [INFO] Session verileri cachelendi - GetSessionWithCacheAsync 
+2025-05-20 21:29:34.2254 [INFO] - Lokasyon verileri cachelendi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:35.7021 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:39.4095 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:40.8303 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:40.8466 [INFO]  - GetJourneyNameById 
+2025-05-20 21:29:40.8466 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:40.8466 [INFO]  - GetJourneyNameById 
+2025-05-20 21:29:41.4202 [ERROR]  - GetJourneysAsync System.Exception: Seçtiğiniz kalkış ve varış noktası arasında herhangi bir sefer bulunmamaktadır. Lütfen farklı bir rota seçerek tekrar deneyin.
+2025-05-20 21:29:47.2727 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:48.9395 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:51.6393 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:51.6393 [INFO]  - GetJourneyNameById 
+2025-05-20 21:29:51.6393 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:29:51.6550 [INFO]  - GetJourneyNameById 
+2025-05-20 21:29:52.1228 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 21:31:16.2230 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 21:31:20.8168 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:31:23.1445 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:50:45.7933 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:50:46.8913 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:50:48.2479 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 21:52:06.7335 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 21:52:55.3038 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 21:53:18.5051 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 21:54:45.3788 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 21:55:35.1110 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 21:55:49.3443 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:03.3983 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:03:05.5328 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:06.6598 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:08.6625 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:08.6625 [INFO]  - GetJourneyNameById 
+2025-05-20 22:03:08.6625 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:08.6783 [INFO]  - GetJourneyNameById 
+2025-05-20 22:03:11.9697 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:03:15.0753 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:27.9048 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:27.9048 [INFO]  - GetJourneyNameById 
+2025-05-20 22:03:27.9048 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:27.9048 [INFO]  - GetJourneyNameById 
+2025-05-20 22:03:28.0396 [ERROR]  - GetJourneysAsync System.Exception: Seçtiğiniz kalkış ve varış noktası arasında herhangi bir sefer bulunmamaktadır. Lütfen farklı bir rota seçerek tekrar deneyin.
+2025-05-20 22:03:30.2011 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:31.0527 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:33.6854 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:35.3077 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:35.3077 [INFO]  - GetJourneyNameById 
+2025-05-20 22:03:35.3077 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:03:35.3077 [INFO]  - GetJourneyNameById 
+2025-05-20 22:03:36.3701 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:03:39.5715 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:05.0893 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:07:07.2150 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:09.2134 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:11.3641 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:11.3641 [INFO]  - GetJourneyNameById 
+2025-05-20 22:07:11.3641 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:11.3641 [INFO]  - GetJourneyNameById 
+2025-05-20 22:07:13.7402 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:07:15.2407 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:24.9202 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:24.9202 [INFO]  - GetJourneyNameById 
+2025-05-20 22:07:24.9202 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:07:24.9252 [INFO]  - GetJourneyNameById 
+2025-05-20 22:07:26.7572 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:07:27.9169 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:09.5965 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:12:12.1552 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:14.6393 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:16.2235 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:18.5750 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:18.5770 [INFO]  - GetJourneyNameById 
+2025-05-20 22:12:18.5770 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:18.5770 [INFO]  - GetJourneyNameById 
+2025-05-20 22:12:20.4493 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:12:23.7435 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:44.2480 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:46.9917 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:12:55.9252 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:32:50.3946 [INFO] Session verileri cachelendi - GetSessionWithCacheAsync 
+2025-05-20 22:32:55.1339 [INFO] - Lokasyon verileri cachelendi - GetBusLocationsCacheAsync 
+2025-05-20 22:32:56.0898 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:33:05.5508 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:33:05.5508 [INFO]  - GetJourneyNameById 
+2025-05-20 22:33:05.5508 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:33:05.5508 [INFO]  - GetJourneyNameById 
+2025-05-20 22:33:12.8876 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:33:20.3232 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:03.4708 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:05.8404 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:08.3519 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:09.1278 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:34.3166 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:34:36.8194 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:37.5851 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:41.1237 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:53.8915 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:34:56.2872 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:57.3833 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:34:59.4431 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:35:00.2397 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:35:00.9542 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:35:01.6546 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:35:02.4742 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:37:48.0645 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:38:08.9051 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:38:08.9051 [INFO]  - GetJourneyNameById 
+2025-05-20 22:38:08.9051 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:38:08.9051 [INFO]  - GetJourneyNameById 
+2025-05-20 22:39:46.7750 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:39:46.7791 [INFO]  - GetJourneyNameById 
+2025-05-20 22:39:46.7791 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:39:46.7791 [INFO]  - GetJourneyNameById 
+2025-05-20 22:39:49.0821 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:40:01.6386 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:40:01.6386 [INFO]  - GetJourneyNameById 
+2025-05-20 22:40:01.6386 [INFO] Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync 
+2025-05-20 22:40:01.6386 [INFO]  - GetJourneyNameById 
+2025-05-20 22:48:14.8092 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:48:28.1802 [INFO]  - GetJourneyNameById 
+2025-05-20 22:48:28.3363 [INFO]  - GetJourneyNameById 
+2025-05-20 22:48:43.0105 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:50:19.9035 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:50:25.0891 [INFO]  - GetJourneyNameById 
+2025-05-20 22:50:25.2346 [INFO]  - GetJourneyNameById 
+2025-05-20 22:54:40.2186 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:54:50.3148 [INFO]  - GetJourneyNameById 
+2025-05-20 22:54:50.4331 [INFO]  - GetJourneyNameById 
+2025-05-20 22:54:59.5629 [INFO]  - GetJourneyNameById 
+2025-05-20 22:54:59.6780 [INFO]  - GetJourneyNameById 
+2025-05-20 22:56:37.9651 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:56:44.2781 [INFO]  - GetJourneyNameById 
+2025-05-20 22:56:44.3966 [INFO]  - GetJourneyNameById 
+2025-05-20 22:57:01.9874 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 22:57:05.3612 [INFO]  - GetJourneyNameById 
+2025-05-20 22:57:05.4735 [INFO]  - GetJourneyNameById 
+2025-05-20 22:58:35.0162 [ERROR]  - GetJourneysAsync System.Exception: Seçtiğiniz kalkış ve varış noktası arasında herhangi bir sefer bulunmamaktadır. Lütfen farklı bir rota seçerek tekrar deneyin.
+2025-05-20 22:58:39.3144 [INFO]  - GetJourneyNameById 
+2025-05-20 22:58:39.4421 [INFO]  - GetJourneyNameById 
+2025-05-20 22:59:16.0501 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 22:59:20.9991 [INFO]  - GetJourneyNameById 
+2025-05-20 22:59:21.1380 [INFO]  - GetJourneyNameById 
+2025-05-20 23:02:06.6645 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:02:19.3393 [INFO]  - GetJourneyNameById 
+2025-05-20 23:02:19.4597 [INFO]  - GetJourneyNameById 
+2025-05-20 23:02:43.4504 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:02:56.7320 [INFO]  - GetJourneyNameById 
+2025-05-20 23:03:01.4489 [INFO]  - GetJourneyNameById 
+2025-05-20 23:03:20.7341 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:03:27.6257 [INFO]  - GetJourneyNameById 
+2025-05-20 23:03:27.7306 [INFO]  - GetJourneyNameById 
+2025-05-20 23:03:39.0987 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:04:15.5130 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:04:26.8371 [INFO]  - GetJourneyNameById 
+2025-05-20 23:04:26.9430 [INFO]  - GetJourneyNameById 
+2025-05-20 23:04:29.8832 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:06:41.4979 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:06:54.3624 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:18:18.4330 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:18:34.0290 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:18:52.9804 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:24:54.2094 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:25:14.3392 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:25:49.2932 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:25:52.8594 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:26:29.8990 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:26:35.6323 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:26:39.6441 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:26:46.9459 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:27:19.6594 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:27:25.1089 [ERROR]  - GetJourneysAsync System.Exception: Seçtiğiniz kalkış ve varış noktası arasında herhangi bir sefer bulunmamaktadır. Lütfen farklı bir rota seçerek tekrar deneyin.
+2025-05-20 23:27:29.3223 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:27:33.5361 [ERROR]  - GetJourneysAsync System.Exception: Seçtiğiniz kalkış ve varış noktası arasında herhangi bir sefer bulunmamaktadır. Lütfen farklı bir rota seçerek tekrar deneyin.
+2025-05-20 23:27:40.5189 [ERROR]  - GetJourneysAsync System.Exception: Seçtiğiniz kalkış ve varış noktası arasında herhangi bir sefer bulunmamaktadır. Lütfen farklı bir rota seçerek tekrar deneyin.
+2025-05-20 23:27:46.3834 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:28:07.1512 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:28:10.9210 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:28:14.6988 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:28:17.9275 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:32:14.3183 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:32:19.9733 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:36:00.4298 [INFO] Session verileri cachelendi - GetSessionWithCacheAsync 
+2025-05-20 23:36:11.1410 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-20 23:37:13.6140 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
+2025-05-20 23:37:23.7219 [INFO] Seyahat verileri çekildi - GetJourneysAsync 

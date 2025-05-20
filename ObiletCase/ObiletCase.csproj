@@ -192,6 +192,8 @@
     <Compile Include="Middleware\ExceptionHandler.cs" />
     <Compile Include="Models\DeviceSession.cs" />
     <Compile Include="Models\JourneyDataModel.cs" />
+    <Compile Include="Models\Request\Browser.cs" />
+    <Compile Include="Models\Request\Connection.cs" />
     <Compile Include="Models\Request\RequestModel.cs" />
     <Compile Include="Models\LocationDataModel.cs" />
     <Compile Include="Models\Response\ResponseModel.cs" />
@@ -260,7 +262,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Journeys.cshtml" />
+    <Content Include="Views\Journey\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

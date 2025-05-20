@@ -18,12 +18,24 @@ namespace ObiletCase.Services
         private string _url;
         private string _token;
 
+        /// <summary>
+        /// 
+        /// </summary>
         public CallApiService()
         {
             _url = ConnectionValues.URL;
             _token = ConnectionValues.TOKEN;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TResponse"></typeparam>
+        /// <param name="path"></param>
+        /// <param name="body"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public async Task<TResponse> CallApi<T, TResponse>(string path, T body)
         {
             using (var client = new HttpClient())

@@ -92,26 +92,6 @@ namespace ObiletCase.Services
             return await _callApiService.CallApi<RequestModel<string>, ResponseModel<List<LocationDataModel>>>(UrlPaths.GET_BUS_LOCATIONS, bodyObject);
         }
 
-
-        public async Task<ResponseModel<List<LocationDataModel>>> GetBusLocationsCacheAsync(string searchText = null)
-        {
-            if (await _cacheService.ExistsAsync(RedisKeys.BUS_LOCATIONS))
-            {
-                _log.Info("Lokasyon verileri cacheden getirildi - GetBusLocationsCacheAsync");
-                return await _cacheService.GetAsync<ResponseModel<List<LocationDataModel>>>(RedisKeys.BUS_LOCATIONS);
-            }
-
-            var busLocations = await GetBusLocationsAsync(searchText);
-            if (busLocations.Status == Status.SUCCESS)
-            {
-                await _cacheService.SetAsync(RedisKeys.BUS_LOCATIONS, busLocations, TimeSpan.FromHours(1));
-                _log.Info("- Lokasyon verileri cachelendi - GetBusLocationsCacheAsync");
-            }
-
-            return busLocations;
-        }
-
-
         public async Task<ResponseModel<List<JourneyDataModel>>> GetJourneysAsync(JourneyDataModel journeyDataModel)
         {
             var bodyObject = new RequestModel<JourneyDataModel>
@@ -132,13 +112,6 @@ namespace ObiletCase.Services
 
             _log.Info("Seyahat verileri çekildi - GetJourneysAsync");
             return response;
-        }
-
-        public async Task<string> GetJourneyNameById(long id)
-        {
-            ResponseModel<List<LocationDataModel>> busLocationResponse = await GetBusLocationsCacheAsync();
-            _log.Info(" - GetJourneyNameById");
-            return busLocationResponse.Data.FirstOrDefault(x => x.Id == id).Name;
         }
 
         #endregion Public Methods
