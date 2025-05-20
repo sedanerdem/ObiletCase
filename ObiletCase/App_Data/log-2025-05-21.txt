@@ -2,3 +2,4 @@
 2025-05-21 00:17:25.1232 [INFO] Session verileri cacheden getirildi - GetSessionWithCacheAsync 
 2025-05-21 00:17:29.8957 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
 2025-05-21 00:17:39.5740 [INFO] Seyahat verileri çekildi - GetJourneysAsync 
+2025-05-21 00:38:37.3252 [INFO] Session verileri cachelendi - GetSessionWithCacheAsync 
