@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ObiletCase.Models
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DeviceSession
     {
         [JsonProperty("session-id")]

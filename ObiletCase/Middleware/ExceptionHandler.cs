@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace ObiletCase.Middleware
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ExceptionHandler : FilterAttribute, IExceptionFilter
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="filterContext"></param>
         public void OnException(ExceptionContext filterContext)
         {
             if (filterContext.ExceptionHandled)

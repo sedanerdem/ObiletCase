@@ -6,6 +6,9 @@ using System.Web;
 
 namespace ObiletCase.Models.Response
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class LocationDataModel
     {
         public int Id { get; set; }
@@ -38,6 +41,9 @@ namespace ObiletCase.Models.Response
         public string Keywords { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class GeoLocation
     {
         public double Latitude { get; set; }
