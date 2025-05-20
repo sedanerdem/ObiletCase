@@ -14,5 +14,9 @@ namespace ObiletCase.Constants
         /// Success Status Value
         /// </summary>
         public const string SUCCESS = "Success";
+        /// <summary>
+        /// Failure Status Value
+        /// </summary>
+        public const string FAIL = "Failure";
     }
 }
